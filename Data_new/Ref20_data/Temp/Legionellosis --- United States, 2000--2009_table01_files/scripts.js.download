@@ -1,0 +1,92 @@
+var agt=navigator.userAgent.toLowerCase();
+var is_major = parseInt(navigator.appVersion);
+var is_mac    = (agt.indexOf("mac")!=-1);
+var is_ie   = (agt.indexOf("msie") != -1);
+var is_ie3  = (is_ie && (is_major < 4));
+var is_ie4  = (is_ie && (is_major == 4) && (agt.indexOf("msie 5.0")==-1) );
+var is_ie5up  = (is_ie  && !is_ie3 && !is_ie4);
+
+var is_nav  = ((agt.indexOf('mozilla')!=-1) && (agt.indexOf('spoofer')==-1) && (agt.indexOf('compatible') == -1) && (agt.indexOf('opera')==-1) && (agt.indexOf('webtv')==-1));
+var is_nav5up = (is_nav && (is_major >= 5));
+
+
+if (is_mac)
+  if (is_ie5up || is_nav5up)
+  	document.write('<link rel="stylesheet" type="text/css" href="' + deRef + 'scripts/winstyles.css">'); 
+  else 
+    document.write('<link rel="stylesheet" type="text/css" href="' + deRef + 'scripts/macstyles.css">');
+else 
+  document.write('<link rel="stylesheet" type="text/css" href="' + deRef + 'scripts/winstyles.css">');
+
+
+
+function loadImage(fileName)
+{ newImage = new Image();
+  newImage.src = fileName;
+  return newImage;
+}
+
+if (document.images)
+{
+   main_bullet_low = loadImage(img_folder + "main_bullet.gif");
+   main_bullet_hi = loadImage(img_folder + "main_bullet_h.gif");
+
+   sub_bullet_low = loadImage(img_folder + "sub_bullet.gif");
+   sub_bullet_hi = loadImage(img_folder + "sub_bullet_h.gif");
+}
+
+
+function Roll(id,fn,level)
+{
+   if (document.images)
+
+	  if (id == "over")
+      {  document[fn].src = eval(level + "_bullet_hi.src");
+      }
+      else if (id == "out")
+      {  document[fn].src = eval(level + "_bullet_low.src"); 
+      }
+}
+
+
+function openWin(url)
+{
+   newwindow=window.open(url,"MMWR",                  
+"scrollbars=yes,resizable=yes,status=yes,width=800,height=400,screenX=0,screenY=0,left=0,top=0,toolbar=yes,menubar=yes,location=yes");
+                            
+} 
+
+
+function sendIt()
+{
+  newwindow=window.open(deRef + 'sendit_form.html','SendIt',                  
+'scrollbars=yes,resizable=yes,status=no,width=550,height=400,screenX=0,screenY=0,left=0,top=0,toolbar=yes,menubar=yes,location=no');
+                            
+} 
+
+function openHelp()
+{
+  newwindow=window.open(deRef + 'printhelp.html','PrintHelp',                  
+'scrollbars=yes,resizable=yes,status=no,width=630,height=270,screenX=0,screenY=0,left=0,top=0,toolbar=yes,menubar=no,location=no');
+                            
+} 
+
+function FrontPage_Form1_Validator(theForm)
+{
+
+  if (theForm.Name.value == "")
+  {
+    alert("Please enter a value for the \"Name\" field.");
+    theForm.Name.focus();
+    return (false);
+  }
+
+  if (theForm.From.value == "")
+  {
+    alert("Please enter a value for the \"From\" field.");
+    theForm.From.focus();
+    return (false);
+  }
+  return (true);
+}
+
