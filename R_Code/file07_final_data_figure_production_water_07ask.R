@@ -191,7 +191,7 @@ save(x = variables_list_dalecarlia_mcmillan_adjusted_frame_subset, file = variab
 # Expanding variable set
 table_extension <- data.frame( var_code = c("TEMP_C", "PRCP_CM", "WDSP_MS" ),
                                var_name = c("Temperature", "Precipitation", "Wind Speed" ),
-                               var_unit = c("C", "CM", "M/S" ) )
+                               var_unit = c("C", "cm", "m/s" ) )
                                
 # Generating extended sets
 variables_list_river_adjusted_frame_modified <- rbind(table_extension,
